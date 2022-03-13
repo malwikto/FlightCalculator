@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container py-4">
+        <img class="rounded-circle account-img float-start me-4 mb-4" src="{{ user.profile.profile_picture.url }}">
+        <h2>{{ profile.user.username }}'s Profile</h2>
+    </div>
+    <div class="container" style="margin-top: 80px">
+        <hr>
+        <p><b>First name:</b> {{ profile.first_name|default:"Not specified" }}</p>
+        <p><b>Last name:</b> {{ profile.last_name|default:"Not specified" }}</p>
+        <p><b>Date of birth:</b> {{ profile.dob|default:"..." }}</p>
+    </div>
+{% endblock %}
