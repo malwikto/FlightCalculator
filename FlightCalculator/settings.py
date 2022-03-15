@@ -125,3 +125,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+API_KEY = "WQ6KtG0WHRGkmzypgM7am56c0vDpawyFFD6btWDy"
+#GET https://api.flightplandatabase.com/auth/revoke

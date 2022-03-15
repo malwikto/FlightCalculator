@@ -25,7 +25,7 @@ admin.site.register(Profile)
 urlpatterns = [
     path('admin/', admin.site.urls, name="admin"),
     path('accounts/', include('accounts.urls')),
-    path('accounts/', include('viewer.urls')),
+    path('viewer/', include('viewer.urls')),
     path('', FlightCalculatorView.as_view(), name="index"),
 ]
 
