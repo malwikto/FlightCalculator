@@ -1,0 +1,12 @@
+[
+  {
+    "model": "viewer.aircraft",
+    "pk": 1,
+    "fields": {
+      "type": "B737",
+      "acft_range": "7084",
+      "fuel_consumption": "2840",
+      "avg_speed": "1"
+    }
+  }
+]

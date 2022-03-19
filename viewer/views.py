@@ -5,7 +5,7 @@ from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, DeleteView
 
 from viewer.models import FlightPlan, Airport, Waypoint
-from viewer.templates.forms import AirportForm, WaypointForm
+from viewer.forms import AirportForm, WaypointForm, FlightPlanForm
 
 LOG = getLogger()
 
@@ -27,6 +27,11 @@ class FlightCalculatorView(ListView):
     template_name = "base.html"
     model = FlightPlan
     paginate_by = 6
+
+class FlightPlansView(ListView):
+    template_name = "flight_plans.html"
+    model = FlightPlan
+    paginate_by = 5
 
 class AirportsView(ListView):
     template_name = "airports.html"
@@ -53,6 +58,16 @@ class WaypointCreateView(CreateView):
     template_name = 'forms/form.html'
     form_class = WaypointForm
     success_url = reverse_lazy('viewer:waypoints')
+    # permission_required = "viewer.add_movie"
+
+    def form_invalid(self, form):
+        LOG.warning("User provided invalid data.")
+        return super().form_invalid(form)
+
+class FlightPlanCreateView(CreateView):
+    template_name = 'forms/form.html'
+    form_class = FlightPlanForm
+    success_url = reverse_lazy('viewer:flight_plans')
     # permission_required = "viewer.add_movie"
 
     def form_invalid(self, form):

@@ -1,6 +1,19 @@
-from django.forms import ModelForm, CharField, DecimalField
+from django.forms import ModelForm, CharField, DecimalField, IntegerField
 
-from viewer.models import Airport, Waypoint
+from viewer.models import Airport, Waypoint, FlightPlan
+
+
+class FlightPlanForm(ModelForm):
+    class Meta:
+        model = FlightPlan
+        fields = '__all__'
+
+    # user_id = IntegerField()
+    # departure_apt_id = IntegerField()
+    # arrival_apt_id = IntegerField()
+    # aircraft_id = IntegerField()
+    # waypoints = CharField(max_length=300)
+
 
 
 class AirportForm(ModelForm):
@@ -8,10 +21,10 @@ class AirportForm(ModelForm):
         model = Airport
         fields = '__all__'
 
-    ICAO = CharField(max_length=4, min_length=4)
-    name = CharField(max_length=40)
-    lat = DecimalField(max_digits=8, decimal_places=6)
-    lon = DecimalField(max_digits=9, decimal_places=6)
+    # ICAO = CharField(max_length=4, min_length=4)
+    # name = CharField(max_length=40)
+    # lat = DecimalField(max_digits=8, decimal_places=6)
+    # lon = DecimalField(max_digits=9, decimal_places=6)
 
 class WaypointForm(ModelForm):
     class Meta:

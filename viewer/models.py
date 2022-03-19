@@ -5,9 +5,14 @@ from django.db.models import Model, CharField, ForeignKey, DO_NOTHING, IntegerFi
 
 class Aircraft(Model):
     type = CharField(max_length=30)
-    acft_range = IntegerField
-    fuel_consumption = IntegerField
-    avg_speed = IntegerField
+    acft_range = IntegerField()
+    fuel_consumption = IntegerField()
+    avg_speed = IntegerField()
+
+    def __str__(self):
+
+
+         return f"{self.type}"
 
 
 class Airport(Model):
@@ -15,6 +20,11 @@ class Airport(Model):
     name = CharField(max_length=40)
     lat = DecimalField(max_digits=8, decimal_places=6)
     lon = DecimalField(max_digits=9, decimal_places=6)
+
+    def __str__(self):
+
+
+         return f"{self.ICAO}"
 
 class Waypoint(Model):
     name = CharField(max_length=5)

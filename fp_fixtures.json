@@ -1,0 +1,14 @@
+[
+  {
+    "model": "viewer.flightplan",
+    "pk": 1,
+    "fields": {
+      "user_id": "1",
+      "departure_apt_id": "43",
+      "arrival_apt_id": "76",
+      "aircraft_id": "1",
+      "waypoints": "KARTI"
+    }
+  }
+]
+
