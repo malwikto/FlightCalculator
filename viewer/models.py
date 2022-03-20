@@ -29,7 +29,7 @@ class Aircraft(models.Model):
 
 class Airport(models.Model):
     ICAO = models.CharField(max_length=4)
-    name = models.CharField(max_length=60)
+    name = models.CharField(max_length=80)
     lat = models.DecimalField(max_digits=8, decimal_places=6)
     lon = models.DecimalField(max_digits=9, decimal_places=6)
 
