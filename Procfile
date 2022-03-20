@@ -1,1 +1,1 @@
-web: gunicorn flightcalculator.wsgi
+web: gunicorn FlightCalculator.wsgi
