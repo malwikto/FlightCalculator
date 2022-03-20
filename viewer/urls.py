@@ -1,7 +1,8 @@
 from django.urls import path
 
 from viewer.views import FlightCalculatorView, AirportsView, WaypointsView, airport_search, waypoint_search, \
-    AirportCreateView, AirportDeleteView, WaypointCreateView, WaypointDeleteView, FlightPlansView, FlightPlanCreateView
+    AirportCreateView, AirportDeleteView, WaypointCreateView, WaypointDeleteView, FlightPlansView, FlightPlanCreateView, \
+    FlightPlanWaypointsView, FlightPlanDeleteView
 
 app_name = 'viewer'
 urlpatterns = [
@@ -12,7 +13,9 @@ urlpatterns = [
     path('airport/<int:pk>/delete/', AirportDeleteView.as_view(), name="delete_airport"),
     path('airport/add', AirportCreateView.as_view(), name="airport_add"),
     path('flightplan/add', FlightPlanCreateView.as_view(), name="flight_plan_add"),
+    path('flightplan/<int:pk>/waypoints', FlightPlanWaypointsView.as_view(), name="flight_plan_waypoint_view"),
     path('waypoint/search', waypoint_search, name="waypoint_search"),
     path('waypoint/add', WaypointCreateView.as_view(), name="waypoint_add"),
     path('waypoint/<int:pk>/delete/', WaypointDeleteView.as_view(), name="delete_waypoint"),
+    path('flightplan/<int:pk>/delete/', FlightPlanDeleteView.as_view(), name="delete_flight_plan"),
 ]

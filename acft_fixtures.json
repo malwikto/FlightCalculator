@@ -4,9 +4,10 @@
     "pk": 1,
     "fields": {
       "type": "B737",
-      "acft_range": "7084",
+      "acft_range": "5436",
       "fuel_consumption": "2840",
-      "avg_speed": "1"
+      "fuel_capacity": "26022",
+      "avg_speed": "842"
     }
   }
 ]

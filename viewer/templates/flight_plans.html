@@ -1,29 +1,26 @@
 {% extends "base.html" %}
 
 {% block content %}
-<a href="#" class="btn btn-outline-primary mt-4" >Find flight plan</a>
 <a href="{% url 'viewer:flight_plan_add' %}" class="btn btn-outline-primary mt-4">Add flight plan</a>
-<h2 class="py-4">List of available waypoints:</h2>
+<h2 class="py-4">List of available flight plans:</h2>
 
 <table class="table table-striped table-hover">
   <thead>
     <tr>
-      <th scope="col">User</th>
+      <th scope="col">ID</th>
         <th scope="col">Departure airport</th>
       <th scope="col">Arrival_airport</th>
-      <th scope="col">Aircraft type</th>
-      <th scope="col">Waypoints</th>
+        <th></th>
     </tr>
   </thead>
   <tbody>
   {% for flight_plan in object_list %}
-    <tr>
-      <td>{{ flight_plan.user_id}}</td>
+    <tr onclick="window.location='{% url "viewer:flight_plan_waypoint_view" flight_plan.id %}'">
+      <th scope="row">{{flight_plan.id}}</th>
       <td>{{ flight_plan.departure_apt_id}}</td>
 
       <td>{{ flight_plan.arrival_apt_id }}</td>
-      <td>{{ flight_plan.aircraft_id }}</td>
-        <td>{{ flight_plan.waypoints }}</td>
+        <td><a class="btn btn-danger btn-sm float-end" href="{% url "viewer:delete_flight_plan" flight_plan.id %}">Delete</a></td>
     </tr>
   {% endfor %}
   </tbody>
