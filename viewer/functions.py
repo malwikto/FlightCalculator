@@ -58,7 +58,7 @@ def add_markers(context):
                             (wpt_list[waypoint_ind].lat, wpt_list[waypoint_ind].lon),
                         ],
                         weight=2,
-                        color="grey",
+                        color="blue",
                         tooltip=f"Stage {waypoint_ind+1} {wpt_list[waypoint_ind-1]} - {wpt_list[waypoint_ind]}",
                     )
                 )
