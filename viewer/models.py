@@ -43,7 +43,7 @@ class FlightPlan(models.Model):
     arrival_apt_id = models.ForeignKey(Airport, on_delete=models.DO_NOTHING, related_name="arrival_apt_id")
     aircraft_id = models.ForeignKey(Aircraft, on_delete=models.DO_NOTHING)
     # waypoints = TextField()
-    waypoints = models.ManyToManyField(Waypoint, null=True)
+    waypoints = models.ManyToManyField(Waypoint, blank=True, null=True)
     fob = models.IntegerField()
     # waypoint = models.ForeignKey(Waypoint, on_delete=models.DO_NOTHING)
 

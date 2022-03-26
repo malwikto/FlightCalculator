@@ -1,7 +1,9 @@
+from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
-from django.forms import ModelForm, CharField, DecimalField, IntegerField, MultipleChoiceField, CheckboxSelectMultiple
+from django.forms import ModelForm, CharField, DecimalField, IntegerField, MultipleChoiceField, CheckboxSelectMultiple, \
+    HiddenInput
 
-from viewer.models import Airport, Waypoint, FlightPlan
+from viewer.models import Airport, Waypoint, FlightPlan, Aircraft
 
 
 class FlightPlanForm(ModelForm):
@@ -11,14 +13,19 @@ class FlightPlanForm(ModelForm):
 
     class Meta:
         model = FlightPlan
-        fields = '__all__'
+        fields = ['departure_apt_id', 'arrival_apt_id', 'aircraft_id', 'waypoints', 'fob']
+        # fields = "__all__"
         labels = {
-            'user_id': 'User',
+            # 'user_id': 'User',
             'departure_apt_id': 'Departure airport ICAO',
             'arrival_apt_id': 'Arrival airport ICAO',
             'aircraft_id': 'Aircraft ICAO type',
+            'waypoints': 'Waypoints',
             'fob': 'FOB',
         }
+        # widgets = {
+        #     'user_id': HiddenInput()
+        # }
 
     def clean(self):
         result = super().clean()
@@ -33,6 +40,10 @@ class FlightPlanForm(ModelForm):
     # aircraft_id = IntegerField()
     # waypoints = CharField(max_length=300)
 
+class AircraftForm(ModelForm):
+    class Meta:
+        model = Aircraft
+        fields = '__all__'
 
 
 class AirportForm(ModelForm):

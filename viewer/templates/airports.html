@@ -20,7 +20,7 @@
       <td>{{ airport.ICAO}}</td>
       <td>{{ airport.lat }}</td>
       <td>{{ airport.lon }}</td>
-      <td>{{ airport.name }} <a class="btn btn-danger btn-sm float-end" href="{% url "viewer:delete_airport" airport.id %}">Delete</a> </td>
+      <td>{{ airport.name }} {%if user.is_superuser%}<a class="btn btn-danger btn-sm float-end" href="{% url "viewer:delete_airport" airport.id %}">Delete</a> {%endif%}</td>
     </tr>
   {% endfor %}
   </tbody>

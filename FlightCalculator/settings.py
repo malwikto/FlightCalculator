@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     # 'django.contrib.gis',
     'viewer',
     'accounts',
+    'fontawesomefree',
 
     'widget_tweaks',
 ]

@@ -1,26 +1,26 @@
 {% extends "base.html" %}
 
 {% block content %}
-<a href="{% url 'viewer:waypoint_search' %}" class="btn btn-outline-primary mt-4" >Find waypoint</a>
-<a href="{% url 'viewer:waypoint_add' %}" class="btn btn-outline-primary mt-4">Add waypoint</a>
-<h2 class="py-4">List of available waypoints:</h2>
-
+<a href="{% url 'viewer:aircraft_add' %}" class="btn btn-outline-primary mt-4">Add aircraft</a>
+<h2 class="py-4">List of available aircrafts:</h2>
 <table class="table table-striped table-hover">
   <thead>
     <tr>
-      <th scope="col">Ident</th>
-        <th scope="col">Latitude</th>
-      <th scope="col">Longitude</th>
-
+      <th scope="col">Type</th>
+        <th scope="col">Range</th>
+      <th scope="col">Fuel consumption</th>
+      <th scope="col">Fuel capacity</th>
+      <th scope="col">Avg speed</th>
     </tr>
   </thead>
   <tbody>
-  {% for waypoint in object_list %}
+  {% for aircraft in object_list %}
     <tr>
-      <td>{{ waypoint.name}}</td>
-
-      <td>{{ waypoint.lat }}</td>
-        <td>{{ waypoint.lon }} {%if user.is_superuser%}<a class="btn btn-danger btn-sm float-end" href="{% url "viewer:delete_waypoint" waypoint.id %}">Delete</a> {%endif%}</td>
+      <td>{{ aircraft.type}}</td>
+      <td>{{ aircraft.acft_range }}</td>
+      <td>{{ aircraft.fuel_consumption }}</td>
+      <td>{{ aircraft.fuel_capacity }}</td>
+      <td>{{ aircraft.avg_speed }} {%if user.is_superuser%}<a class="btn btn-danger btn-sm float-end" href="{% url "viewer:delete_aircraft" aircraft.id %}">Delete</a> {%endif%}</td>
     </tr>
   {% endfor %}
   </tbody>

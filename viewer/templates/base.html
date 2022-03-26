@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,6 +15,9 @@
           width: 100px;
       }
     </style>
+
+    <link href="{% static 'fontawesomefree/css/all.min.css' %}" rel="stylesheet" type="text/css">
+
 </head>
 <body>
 <nav class="navbar navbar-dark bg-dark">
@@ -32,6 +36,9 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{% url 'viewer:waypoints' %}">Waypoints</a>
+        </li>
+          <li class="nav-item">
+          <a class="nav-link" href="{% url 'viewer:aircrafts' %}">Aircrafts</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" >Contact</a>
