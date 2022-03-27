@@ -3,10 +3,12 @@
 {% block content %}
 <a href="{% url 'viewer:waypoint_search' %}" class="btn btn-outline-primary mt-4" >Find waypoint</a>
 <a href="{% url 'viewer:waypoint_add' %}" class="btn btn-outline-primary mt-4">Add waypoint</a>
-<h2 class="py-4">List of available waypoints:</h2>
 
-<table class="table table-striped table-hover">
+<table class="table table-light table-hover py-4"  style="margin-top: 40px;">
   <thead>
+  <tr>
+    <th colspan="9" style="font-size: large;">List of available waypoints</th>
+  </tr>
     <tr>
       <th scope="col">Ident</th>
         <th scope="col">Latitude</th>

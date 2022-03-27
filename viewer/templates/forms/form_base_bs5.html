@@ -19,7 +19,7 @@
 
     {% for field in form.visible_fields %}
       <div class="form-group mb-3">
-      <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
+      <label for="{{ field.id_for_label }}" class="form-label rounded py-1 px-1 text-center">{{ field.label }}</label>
       {% if form.is_bound %}
           {% if field.errors %}
             {% render_field field class="form-control is-invalid" %}

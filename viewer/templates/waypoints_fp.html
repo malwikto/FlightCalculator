@@ -1,19 +1,14 @@
 {% extends "base.html" %}
 
 {% block content %}
-<style>
-    div {text-align: center;}
-</style>
-<h1>{{object}}</h1>
-<h3>Aircraft type: {{object.aircraft_id}} FOB: {{object.fob}} liters FOB range: {{object.fob_range}}</h3>
-{% if not object.achivable %}
-<div class="alert alert-danger mx-auto" role="alert">
-  Warning! You will not be able to reach your destination with {{object.fob}} liters!
-</div>
-{% endif %}
-<h3>Waypoints</h3>
-<table class="table table-striped table-hover">
+<h1 class="text-center mt-2 rounded">{{object}}</h1>
+<h3 class="text-center mt-2 rounded">Aircraft type: {{object.aircraft_id}} FOB: {{object.fob}} liters FOB range: {{object.fob_range}}</h3>
+
+<table class="table table-light table-hover"  style="margin-top: 40px;">
     <thead>
+      <tr>
+    <th colspan="9" style="font-size: large;">Waypoints</th>
+  </tr>
         <tr>
       <th scope="col">Name</th>
       <th scope="col">Type</th>

@@ -2,6 +2,20 @@ import folium
 import pyproj
 from nautical_calculations.basic import rhumb_line, get_bearing
 
+def add_all_airports_to_map(context):
+    apt_list = context.get('airport_list')
+    m = folium.Map(
+        width='100%', height=500, zoom_start=1
+    )
+    for apt in apt_list:
+        folium.Marker(
+            [apt.lat, apt.lon],
+            popup=apt,
+            icon=folium.Icon(color="grey", icon="fa fa-suitcase", prefix="fa"),
+        ).add_to(m)
+    m = m._repr_html_()
+    return m
+
 def point_map_view(context):
     lat = context.get('object').lat
     lon = context.get('object').lon

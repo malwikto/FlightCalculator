@@ -10,7 +10,8 @@ from viewer.models import FlightPlan, Airport, Waypoint, Aircraft
 from viewer.forms import AirportForm, WaypointForm, FlightPlanForm, AircraftForm
 
 from .functions import distances_list_creator, total_distance_creator, ete_calculator, total_time_calculator, \
-    hdg_calculator, range_calculaor, hms2float, is_fp_to_be_achived, add_fp_markers, center_coordinates, point_map_view
+    hdg_calculator, range_calculaor, hms2float, is_fp_to_be_achived, add_fp_markers, center_coordinates, point_map_view, \
+    add_all_airports_to_map
 
 # add_apt_markers
 
@@ -95,6 +96,18 @@ class AirportsView(ListView):
 
         context.update({
             'airports': context.get('airport_list'),
+        })
+        return context
+
+class AirportsMapView(ListView):
+    template_name = "airports_map.html"
+    model = Airport
+
+    def get_context_data(self, **kwargs):
+        context = super(AirportsMapView, self).get_context_data(**kwargs)
+
+        context.update({
+            'map': add_all_airports_to_map(context),
         })
         return context
 

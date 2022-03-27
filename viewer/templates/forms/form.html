@@ -2,7 +2,7 @@
 
 
 {% block content %}
-    <form method="post" enctype="multipart/form-data" class="py-4">
+    <form method="post" enctype="multipart/form-data" class="py-4" style="max-width: 30%; margin:auto;">
         {% csrf_token %}
         {% include "forms/form_base_bs5.html" %}
         <button type="submit" class="btn btn-primary">Submit</button>

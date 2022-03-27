@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+    div {text-align: center;}
+    h1 {text-align: center;}
+    body {
+            background-image: url("media/background.jpg");
+              background-attachment: fixed;
+            background-size: cover;
+}
+</style>
+<h1>All airports</h1>
+{{map|safe}}
+{% endblock %}
