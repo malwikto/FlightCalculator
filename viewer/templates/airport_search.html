@@ -21,6 +21,8 @@
       <th scope="col">Latitude</th>
       <th scope="col">Longitude</th>
       <th scope="col">Name</th>
+      <th scope="col">Country code</th>
+
     </tr>
   </thead>
   <tbody>
@@ -30,6 +32,7 @@
       <td>{{ airport.lat }}</td>
       <td>{{ airport.lon }}</td>
       <td>{{ airport.name }}</td>
+      <td>{{ airport.iso_country }}</td>
     </tr>
   {% endfor %}
   </tbody>

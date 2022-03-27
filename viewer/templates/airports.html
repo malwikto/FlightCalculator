@@ -12,6 +12,7 @@
         <th scope="col">Latitude</th>
       <th scope="col">Longitude</th>
       <th scope="col">Airport name</th>
+      <th scope="col">Country code</th>
     </tr>
   </thead>
   <tbody>
@@ -20,7 +21,8 @@
       <td>{{ airport.ICAO}}</td>
       <td>{{ airport.lat }}</td>
       <td>{{ airport.lon }}</td>
-      <td>{{ airport.name }} {%if user.is_superuser%}<a class="btn btn-danger btn-sm float-end" href="{% url "viewer:delete_airport" airport.id %}">Delete</a> {%endif%}</td>
+      <td>{{ airport.name }}</td>
+      <td>{{ airport.iso_country }} {%if user.is_superuser%}<a class="btn btn-danger btn-sm float-end" href="{% url "viewer:delete_airport" airport.id %}">Delete</a> {%endif%}</td>
     </tr>
   {% endfor %}
   </tbody>

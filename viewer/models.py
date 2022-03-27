@@ -32,6 +32,7 @@ class Airport(models.Model):
     name = models.CharField(max_length=100)
     lat = models.DecimalField(max_digits=8, decimal_places=6)
     lon = models.DecimalField(max_digits=9, decimal_places=6)
+    iso_country = models.CharField(max_length=2)
 
     def __str__(self):
         return f"{self.ICAO} - {self.name}"
