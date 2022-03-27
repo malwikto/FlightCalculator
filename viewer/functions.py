@@ -2,6 +2,19 @@ import folium
 import pyproj
 from nautical_calculations.basic import rhumb_line, get_bearing
 
+def point_map_view(context):
+    lat = context.get('object').lat
+    lon = context.get('object').lon
+    m = folium.Map(
+            width='100%', height=500, location=(lat, lon), zoom_start=10
+        )
+    folium.Marker(
+        [lat, lon],
+        popup=f'{context["object"]}',
+        icon=folium.Icon(color="grey"),
+    ).add_to(m)
+    m = m._repr_html_()
+    return m
 
 def zoom_calc(context):
     distance = context["object"].arrival_apt_id.total_distance
@@ -15,7 +28,7 @@ def center_coordinates(context):
     ]
 
 
-def add_markers(context):
+def add_fp_markers(context):
     wpt_list = context.get("waypoints_list")
     dep_lat = context["object"].departure_apt_id.lat
     dep_lon = context["object"].departure_apt_id.lon
@@ -26,12 +39,12 @@ def add_markers(context):
     )
     folium.Marker(
         [dep_lat, dep_lon],
-        popup=context["object"].departure_apt_id,
+        popup=f'{context["object"].departure_apt_id}',
         icon=folium.Icon(color="red", icon="plane", prefix="fa"),
     ).add_to(m)
     folium.Marker(
         [arr_lat, arr_lon],
-        popup=context["object"].arrival_apt_id,
+        popup=f'{context["object"].arrival_apt_id}',
         icon=folium.Icon(color="green", icon="plane", prefix="fa", angle=180),
     ).add_to(m)
     if wpt_list:
@@ -40,7 +53,7 @@ def add_markers(context):
                 locations=[(dep_lat, dep_lon), (wpt_list[0].lat, wpt_list[0].lon)],
                 weight=2,
                 color="red",
-                tooltip=f'Stage 1 {context["object"].departure_apt_id} - {wpt_list[0]}',
+                tooltip=f'Stage 1 {context["object"].departure_apt_id.ICAO} - {wpt_list[0]}',
             )
         )
 
@@ -67,7 +80,7 @@ def add_markers(context):
                 locations=[(wpt_list[len(wpt_list) - 1].lat, wpt_list[len(wpt_list) - 1].lon), (arr_lat, arr_lon)],
                 weight=2,
                 color="green",
-                tooltip=f'Stage {len(wpt_list)+1} {wpt_list[len(wpt_list)-1]} - {context["object"].arrival_apt_id}',
+                tooltip=f'Stage {len(wpt_list)+1} {wpt_list[len(wpt_list)-1]} - {context["object"].arrival_apt_id.ICAO}',
             )
         )
     else:

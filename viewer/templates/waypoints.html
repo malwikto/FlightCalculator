@@ -16,7 +16,7 @@
   </thead>
   <tbody>
   {% for waypoint in object_list %}
-    <tr>
+    <tr onclick="window.location='{% url "viewer:waypoint_map" waypoint.id %}'">
       <td>{{ waypoint.name}}</td>
 
       <td>{{ waypoint.lat }}</td>

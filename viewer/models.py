@@ -34,7 +34,7 @@ class Airport(models.Model):
     lon = models.DecimalField(max_digits=9, decimal_places=6)
 
     def __str__(self):
-        return f"{self.ICAO}"
+        return f"{self.ICAO} - {self.name}"
 
 
 class FlightPlan(models.Model):

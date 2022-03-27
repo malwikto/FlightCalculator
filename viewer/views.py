@@ -10,7 +10,9 @@ from viewer.models import FlightPlan, Airport, Waypoint, Aircraft
 from viewer.forms import AirportForm, WaypointForm, FlightPlanForm, AircraftForm
 
 from .functions import distances_list_creator, total_distance_creator, ete_calculator, total_time_calculator, \
-    hdg_calculator, range_calculaor, hms2float, is_fp_to_be_achived, add_markers, center_coordinates
+    hdg_calculator, range_calculaor, hms2float, is_fp_to_be_achived, add_fp_markers, center_coordinates, point_map_view
+
+# add_apt_markers
 
 LOG = getLogger()
 
@@ -77,7 +79,7 @@ class FlightPlanWaypointsView(DetailView):
         center_coordinates(context)
 
         context.update({
-            'map': add_markers(context)
+            'map': add_fp_markers(context)
         })
 
         return context
@@ -88,6 +90,35 @@ class AirportsView(ListView):
     model = Airport
     paginate_by = 50
 
+    def get_context_data(self, **kwargs):
+        context = super(AirportsView, self).get_context_data(**kwargs)
+
+        context.update({
+            'airports': context.get('airport_list'),
+        })
+        return context
+
+class AirportDetailView(DetailView):
+    template_name = "point_map.html"
+    model = Airport
+
+    def get_context_data(self, **kwargs):
+        context = super(AirportDetailView, self).get_context_data(**kwargs)
+        context.update({
+            'map': point_map_view(context)
+        })
+        return context
+
+class WaypointDetailView(DetailView):
+    template_name = "point_map.html"
+    model = Waypoint
+
+    def get_context_data(self, **kwargs):
+        context = super(WaypointDetailView, self).get_context_data(**kwargs)
+        context.update({
+            'map': point_map_view(context)
+        })
+        return context
 
 class AircraftsView(ListView):
     template_name = "aircrafts.html"

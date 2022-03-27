@@ -16,7 +16,7 @@
   </thead>
   <tbody>
   {% for airport in object_list %}
-    <tr>
+    <tr onclick="window.location='{% url "viewer:airport_map" airport.id %}'">
       <td>{{ airport.ICAO}}</td>
       <td>{{ airport.lat }}</td>
       <td>{{ airport.lon }}</td>

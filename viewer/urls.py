@@ -2,12 +2,15 @@ from django.urls import path
 
 from viewer.views import FlightCalculatorView, AirportsView, WaypointsView, airport_search, waypoint_search, \
     AirportCreateView, AirportDeleteView, WaypointCreateView, WaypointDeleteView, FlightPlansView, FlightPlanCreateView, \
-    FlightPlanWaypointsView, FlightPlanDeleteView, AircraftsView, AircraftDeleteView, AircraftCreateView
+    FlightPlanWaypointsView, FlightPlanDeleteView, AircraftsView, AircraftDeleteView, AircraftCreateView, \
+    AirportDetailView, WaypointDetailView
 
 app_name = 'viewer'
 urlpatterns = [
     path('airports', AirportsView.as_view(), name="airports"),
+    path('airports/<int:pk>/map', AirportDetailView.as_view(), name="airport_map"),
     path('waypoints', WaypointsView.as_view(), name="waypoints"),
+    path('waypoints/<int:pk>/map', WaypointDetailView.as_view(), name="waypoint_map"),
     path('aircrafts', AircraftsView.as_view(), name="aircrafts"),
     path('flightplans/', FlightPlansView.as_view(), name="flight_plans"),
     path('airport/search', airport_search, name="airport_search"),
