@@ -3,9 +3,9 @@
 {% block content %}
 <form method="post" class="py-4">
 {% csrf_token %}
-<p>
+<h3>
     Are you sure you wat to remove airport "{{ object.ICAO }}" from the database?
-</p>
+</h3>
 <input type="submit" value="Submit" class="btn btn-danger">
 </form>
 {% endblock %}

@@ -3,8 +3,13 @@
 {% block content %}
 <h1 class="text-center mt-2 rounded">{{object}}</h1>
 <h3 class="text-center mt-2 rounded">Aircraft type: {{object.aircraft_id}} FOB: {{object.fob}} liters FOB range: {{object.fob_range}}</h3>
+{% if not object.achivable %}
+<div class="alert alert-danger mx-auto" role="alert">
+  Warning! You will not be able to reach your destination with {{object.fob}} liters!
+</div>
+{% endif %}
 
-<table class="table table-light table-hover"  style="margin-top: 40px;">
+<table class="table table-light table-hover">
     <thead>
       <tr>
     <th colspan="9" style="font-size: large;">Waypoints</th>

@@ -203,5 +203,5 @@ def range_calculaor(context):
 def is_fp_to_be_achived(context):
     if hms2float(context.get("object").arrival_apt_id.tte) > hms2float(context.get("object").fob_range):
         context.get("object").achivable = False
-    elif hms2float(context.get("object").arrival_apt_id.tte) <= hms2float(context.get("object").fob_range):
+    else:
         context.get("object").achivable = True
